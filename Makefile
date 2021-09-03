@@ -6,6 +6,10 @@ setup:
 lint:
 	flake8 --exclude venv
 
+.PHONY: typing
+typing:
+	mypy tools tests
+
 .PHONY: test
 test:
 	pytest
