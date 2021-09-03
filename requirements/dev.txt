@@ -1,0 +1,6 @@
+-r base.txt
+pytest
+pytest-cov
+mypy
+flake8
+pre-commit
