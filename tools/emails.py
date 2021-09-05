@@ -23,15 +23,3 @@ def send_email(to_email: str, subject: str, message: str) -> None:
         server.starttls(context=context)
         server.login(from_email, password)
         server.sendmail(from_email, to_email, email_message)
-
-
-def send_mailx(to_email: str, subject: str, message: str) -> None:
-    """
-    Send an email message using mailx if available.
-    """
-    if shutil.which("mailx") is None:
-        raise RuntimeError("Cannot find mailx in path.")
-
-    ret = os.system(f"echo '{message}' | mailx -s '{subject}' {to_email}")
-    if ret != 0:
-        raise RuntimeError("mailx did not return successfully.")
