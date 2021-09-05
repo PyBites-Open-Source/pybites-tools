@@ -28,7 +28,7 @@ For example you could add something like this in your `.zshrc`:
 
 ```
 function remind {
-    (cd $HOME/code/pybites-tools && ae && python -m tools.email -s "$1" -m "$2")
+    (cd $HOME/code/pybites-tools && source venv/bin/activate && python -m tools.email -s "$1" -m "$2")
 }
 ```
 
