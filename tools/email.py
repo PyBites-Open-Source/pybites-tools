@@ -1,6 +1,7 @@
 import os
 import ssl
 import smtplib
+from typing import Optional
 
 from dotenv import load_dotenv
 
@@ -11,13 +12,13 @@ class MissingRecipientEmail(Exception):
     """Exception to be raised if no recipient email is provided"""
 
 
-def send_email(subject: str, message: str, to_email: str = None) -> None:
+def send_email(subject: str, message: str, to_email: Optional[str] = None) -> None:
     """
     Send an email message. Retrieve config from environment. If to_email is not
     provided try sending it to EMAIL_DEFAULT_TO_EMAIL.
     """
     host = os.environ["EMAIL_SMTP_HOST"]
-    port = os.environ.get("EMAIL_SMTP_PORT", 587)
+    port = int(os.environ.get("EMAIL_SMTP_PORT", 587))
     from_email = os.environ["EMAIL_USERNAME"]
     password = os.environ["EMAIL_PASSWORD"]
     to_email = to_email or os.environ.get("EMAIL_DEFAULT_TO_EMAIL")
