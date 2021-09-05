@@ -23,3 +23,12 @@ def send_email(to_email: str, subject: str, message: str) -> None:
         server.starttls(context=context)
         server.login(from_email, password)
         server.sendmail(from_email, to_email, email_message)
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--subject", required=True)
+    parser.add_argument("-m", "--message", required=True)
+    args = parser.parse_args()
