@@ -2,7 +2,7 @@ import re
 
 import pytest
 
-from tools.strings.license import generate_license_key
+from tools.license import generate_license_key
 
 
 @pytest.mark.parametrize(
