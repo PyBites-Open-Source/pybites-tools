@@ -8,7 +8,7 @@ lint:
 
 .PHONY: typing
 typing:
-	mypy tools tests
+	mypy pybites_tools tests
 
 .PHONY: test
 test:
