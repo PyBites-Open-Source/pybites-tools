@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [tool.flit.module]
-name = "tools"
+name = "pybites_tools"
 
 [project.optional-dependencies]
 test = [
@@ -32,5 +32,5 @@ test = [
 Source = "https://github.com/PyBites-Open-Source/pybites-tools"
 
 [project.scripts]
-s3 = "tools.aws:main"
-zen = "tools.zen:main"
+s3 = "pybites_tools.aws:main"
+zen = "pybites_tools.zen:main"

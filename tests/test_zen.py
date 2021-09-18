@@ -1,4 +1,4 @@
-from tools.zen import zen_of_python
+from pybites_tools.zen import zen_of_python
 
 
 def test_zen_of_python():
