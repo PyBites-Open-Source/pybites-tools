@@ -1,3 +1,4 @@
+import argparse
 import os
 from typing import Optional
 
@@ -31,9 +32,7 @@ def upload_to_s3(
     return s3_file_link
 
 
-if __name__ == "__main__":
-    import argparse
-
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file", required=True)
     parser.add_argument("-b", "--bucket")
@@ -41,3 +40,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     upload_to_s3(args.file, args.bucket, args.acl)
+
+
+if __name__ == "__main__":
+    main()
