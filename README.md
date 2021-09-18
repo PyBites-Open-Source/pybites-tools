@@ -2,7 +2,39 @@
 
 A repo to commit common Python utility scripts and snippets
 
-## Setup
+## Use in your project
+
+```
+pip install pybites-tools
+```
+
+Use command line scripts (for some scripts you need to set environment variables), for example:
+
+```
+(venv) $ s3
+usage: s3 [-h] -f FILE [-b BUCKET] [-a ACL]
+s3: error: the following arguments are required: -f/--file
+
+(venv) $ zen
+The Zen of Python has been copied to your clipboard
+```
+
+Or use tools by importing them in your scripts, for example:
+
+```
+>>> from tools.license import generate_license_key
+>>> generate_license_key()
+'35HN2KIW-K3ON4F94-IGJ1UN32-EAXSRZLF'
+```
+
+## Developer setup
+
+Make a fork and clone it, for example:
+
+```
+git clone git@github.com:bbelderbos/pybites-tools.git
+cd pybites-tools
+```
 
 To get started run: `make setup`. This will create a virtual environment and install the dependencies.
 
