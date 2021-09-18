@@ -11,18 +11,22 @@ pip install pybites-tools
 Use command line scripts (for some scripts you need to set environment variables), for example:
 
 ```
+(venv) $ zen
+The Zen of Python has been copied to your clipboard
+
 (venv) $ s3
 usage: s3 [-h] -f FILE [-b BUCKET] [-a ACL]
 s3: error: the following arguments are required: -f/--file
 
-(venv) $ zen
-The Zen of Python has been copied to your clipboard
+(venv) $ email
+usage: email [-h] -s SUBJECT -m MESSAGE [-e EMAIL]
+email: error: the following arguments are required: -s/--subject, -m/--message
 ```
 
 Or use tools by importing them in your scripts, for example:
 
 ```
->>> from tools.license import generate_license_key
+>>> from pybites_tools.license import generate_license_key
 >>> generate_license_key()
 '35HN2KIW-K3ON4F94-IGJ1UN32-EAXSRZLF'
 ```
@@ -51,7 +55,7 @@ In no particular order:
 Configure the `EMAIL_*` environment variables, then you can run it like this:
 
 ```
-$ python -m tools.email -s "test subject" -m "test message" --email recipient@example.com
+$ python -m pybites_tools.email -s "test subject" -m "test message" --email recipient@example.com
 ```
 
 If you set `EMAIL_DEFAULT_TO_EMAIL`, you can leave off the `--email` switch. This is useful if you want to send yourself a reminder often.
@@ -60,7 +64,7 @@ For example you could add something like this in your `.zshrc`:
 
 ```
 function remind {
-    (cd $HOME/code/pybites-tools && source venv/bin/activate && python -m tools.email -s "$1" -m "$2")
+    (cd $HOME/code/pybites-tools && source venv/bin/activate && python -m pybites_tools.email -s "$1" -m "$2")
 }
 ```
 
@@ -77,7 +81,7 @@ For this you need to set the `AWS_*` configuration variables in `.env`.
 Then you can upload a file using:
 
 ```
-$ python -m tools.aws -f file-path (-b bucket) (-a acl)
+$ python -m pybites_tools.aws -f file-path (-b bucket) (-a acl)
 ```
 
 ### Copy Zen of Python to clipboard
@@ -85,6 +89,6 @@ $ python -m tools.aws -f file-path (-b bucket) (-a acl)
 Why not send it to a coder friend from time to time? Easy:
 
 ```
-$ python -m tools.zen
+$ python -m pybites_tools.zen
 The Zen of Python has been copied to your clipboard
 ```

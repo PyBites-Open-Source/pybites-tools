@@ -1,3 +1,4 @@
+import argparse
 import os
 import ssl
 import smtplib
@@ -36,9 +37,7 @@ def send_email(subject: str, message: str, to_email: Optional[str] = None) -> No
         server.sendmail(from_email, to_email, email_message)
 
 
-if __name__ == "__main__":
-    import argparse
-
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--subject", required=True)
     parser.add_argument("-m", "--message", required=True)
@@ -46,3 +45,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     send_email(args.subject, args.message, args.email)
+
+
+if __name__ == "__main__":
+    main()
