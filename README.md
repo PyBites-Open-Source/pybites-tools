@@ -21,6 +21,10 @@ s3: error: the following arguments are required: -f/--file
 (venv) $ email
 usage: email [-h] -s SUBJECT -m MESSAGE [-e EMAIL]
 email: error: the following arguments are required: -s/--subject, -m/--message
+
+(venv) $ alarm -h
+usage: Play an alarm after N minutes [-h] [-m MINUTES]
+...
 ```
 
 Or use tools by importing them in your scripts, for example:
