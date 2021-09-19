@@ -1,4 +1,5 @@
 -r base.txt
+-r pybites.txt
 pytest
 pytest-cov
 mypy
