@@ -23,7 +23,7 @@ usage: email [-h] -s SUBJECT -m MESSAGE [-e EMAIL]
 email: error: the following arguments are required: -s/--subject, -m/--message
 
 (venv) $ alarm -h
-usage: Play an alarm after N minutes [-h] [-m MINUTES]
+usage: Play an alarm after N minutes [-h] -m MINUTES
 ...
 ```
 

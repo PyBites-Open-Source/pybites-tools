@@ -24,10 +24,7 @@ def countdown(seconds: int) -> None:
 def main():
     parser = argparse.ArgumentParser("Play an alarm after N minutes")
     parser.add_argument(
-        "-m",
-        "--minutes",
-        default=25,
-        help="Number of minutes to countdown from (default 25 = Pomodoro)",
+        "-m", "--minutes", required=True, help="Number of minutes to countdown from"
     )
     args = parser.parse_args()
     seconds = int(args.minutes) * 60
