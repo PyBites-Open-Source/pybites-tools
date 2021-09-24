@@ -138,4 +138,4 @@ dmypy.json
 cython_debug/
 
 # Jetbrains - pycharm files
-.idea
+.idea/
