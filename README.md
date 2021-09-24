@@ -1,14 +1,17 @@
 # PyBites Tools
+Welcome to PyBites Tools repo!
 
-A repo to commit common Python utility scripts and snippets
+This is a collection repo for all things python that we have found helpful to get your modern Python project up and going.
 
-## Use in your project
+## Get started 
+
+### Using this repo in your project
 
 ```
 pip install pybites-tools
 ```
 
-Use command line scripts (for some scripts you need to set environment variables), for example:
+To use the command-line scripts (some scripts you need to set environment variables), for example:
 
 ```
 (venv) $ zen
@@ -32,27 +35,27 @@ Or use tools by importing them in your scripts, for example:
 ```
 
 ## Developer setup
-
-Make a fork and clone it, for example:
+If you want to contribute or modify the repo, make a fork and clone it, for example:
 
 ```
 git clone git@github.com:bbelderbos/pybites-tools.git
 cd pybites-tools
 ```
 
-To get started run: `make setup`. This will create a virtual environment and install the dependencies.
+To get started run: \
+`make setup` \
+This will create a virtual environment and install the dependencies.
 
-We recommend running the `black` code formatter before committing, to set this up run `pre-commit install`.
+Before committing any code, you should install and run pre-commit. [Why pre-commit?](https://talkpython.fm/episodes/show/282/pre-commit-framework) 
+Just run  `pre-commit install`.
 
-For some tools you will need environment variables. You can set them by copying over the `.env-template` file to `.env`.
+For some tools, you will need environment variables. You can set them by copying over the `.env-template` file to `.env`.
 
 ## Useful tools
 
-In no particular order:
-
 ### Send email
 
-Configure the `EMAIL_*` environment variables, then you can run it like this:
+Configure the `EMAIL_*` environment variables; then you can run it like this:
 
 ```
 $ python -m pybites_tools.email -s "test subject" -m "test message" --email recipient@example.com
@@ -60,7 +63,7 @@ $ python -m pybites_tools.email -s "test subject" -m "test message" --email reci
 
 If you set `EMAIL_DEFAULT_TO_EMAIL`, you can leave off the `--email` switch. This is useful if you want to send yourself a reminder often.
 
-For example you could add something like this in your `.zshrc`:
+For example, you could add something like this in your `.zshrc`:
 
 ```
 function remind {
@@ -74,9 +77,9 @@ Then you can send yourself a quick email like this:
 $ remind "blog post" "git stats"
 ```
 
-### Upload files to an S3 bucket
+### Uploading files to an S3 bucket
 
-For this you need to set the `AWS_*` configuration variables in `.env`.
+For this, you need to set the `AWS_*` configuration variables in `.env`.
 
 Then you can upload a file using:
 
@@ -86,7 +89,7 @@ $ python -m pybites_tools.aws -f file-path (-b bucket) (-a acl)
 
 ### Copy Zen of Python to clipboard
 
-Why not send it to a coder friend from time to time? Easy:
+Why not send it to a coder friend from time to time?
 
 ```
 $ python -m pybites_tools.zen
