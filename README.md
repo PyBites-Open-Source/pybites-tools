@@ -3,7 +3,7 @@ Welcome to PyBites Tools repo!
 
 This is a collection repo for all things python that we have found helpful to get your modern Python project up and going.
 
-## Get started 
+## Get started
 
 ### Using this repo in your project
 
@@ -46,7 +46,7 @@ To get started run: \
 `make setup` \
 This will create a virtual environment and install the dependencies.
 
-Before committing any code, you should install and run pre-commit. [Why pre-commit?](https://talkpython.fm/episodes/show/282/pre-commit-framework) 
+Before committing any code, you should install and run pre-commit. [Why pre-commit?](https://talkpython.fm/episodes/show/282/pre-commit-framework)
 Just run  `pre-commit install`.
 
 For some tools, you will need environment variables. You can set them by copying over the `.env-template` file to `.env`.
@@ -85,6 +85,24 @@ Then you can upload a file using:
 
 ```
 $ python -m pybites_tools.aws -f file-path (-b bucket) (-a acl)
+```
+
+### WorldClock from the command line
+
+Add the timezones that you would like displayed to the TIMEZONE_LIST configuration variable in `.env`. (List of all timezones [here](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568).)
+
+Like this:
+
+```
+TIMEZONE_LIST=["America/Los_Angeles","CET","Australia/Sydney"]
+```
+
+Then:
+```
+$ python -m pybites_tools.worldclock
+America/Los_Angeles       08:35PM
+CET                       05:35AM
+Australia/Sydney          02:35PM
 ```
 
 ### Copy Zen of Python to clipboard
