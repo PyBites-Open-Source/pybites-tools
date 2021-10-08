@@ -1,25 +1,20 @@
-import sys
+from contextlib import redirect_stdout
 from io import StringIO
 
 
-def zen_of_python() -> list[str]:
-    """
-    Dump the Zen of Python into a variable
-    https://stackoverflow.com/a/23794519
-    """
-    zen = StringIO()
-    old_stdout = sys.stdout
-    sys.stdout = zen
-    import this  # noqa F401
+def zen_of_python():
+    input = StringIO()
+    with redirect_stdout(input):
+        import this
+    zen = input.getvalue()
 
-    sys.stdout = old_stdout
-    return zen.getvalue().splitlines()
+    return zen
 
 
 def main():
     import pyperclip
 
-    zen = "\n".join(zen_of_python())
+    zen = zen_of_python()
     pyperclip.copy(zen)
     print("The Zen of Python has been copied to your clipboard")
 
