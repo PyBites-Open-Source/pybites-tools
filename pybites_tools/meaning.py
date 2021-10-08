@@ -3,7 +3,7 @@ import requests
 
 
 def get_meaning(args):
-    lang = "en"
+    lang = ""
     word = args.word
 
     if args.lang:
@@ -49,6 +49,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-l",
         "--lang",
+        default="en",
         help="Set the language for the word in ISO 2 letter format. For more information see https://www.sitepoint.com/iso-2-letter-language-codes/",
     )
     parser.add_argument(
@@ -59,5 +60,5 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    print(args)
+
     main(args)

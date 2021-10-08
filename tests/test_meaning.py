@@ -9,11 +9,11 @@ from unittest import mock
     "args, expected",
     [
         (
-            argparse.Namespace(lang=None, origin=False, word="word"),
+            argparse.Namespace(lang="en", origin=False, word="word"),
             "a single distinct meaningful element of speech or writing,",
         ),
         (
-            argparse.Namespace(lang=None, origin=True, word="word"),
+            argparse.Namespace(lang="en", origin=True, word="word"),
             "Old English, of Germanic origin; related to Dutch woord and German Wort, from an Indo-European root shared by Latin verbum ‘word’.",
         ),
         (
