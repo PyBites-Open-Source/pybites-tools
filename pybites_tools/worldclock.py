@@ -13,7 +13,7 @@ def main():
     for zone in timezones:
         zone_now = datetime.now(ZoneInfo(zone))
         formatted_time = zone_now.strftime("%I:%M%p")
-        print("{0:25} {1}".format(zone, formatted_time))
+        print(f"{zone:25} {formatted_time}")
 
 
 if __name__ == "__main__":
