@@ -12,20 +12,29 @@ dynamic = ["version", "description"]
 dependencies = [
     "requests >=2.26.0",
     "python-dotenv >=0.19.0",
-    "boto3 >=1.18.36",
-    "pyperclip >=1.8.2",
 ]
 
 [tool.flit.module]
 name = "pybites_tools"
 
 [project.optional-dependencies]
+aws = [
+    "boto3 >=1.18.36",
+]
+pybites = [
+    "pybites-alarm",
+    "pybites-carbon",
+    "pybites-pysource",
+]
 test = [
     "pytest",
     "pytest-cov",
     "mypy",
     "flake8",
     "pre-commit",
+]
+zen = [
+    "pyperclip >=1.8.2",
 ]
 
 [project.urls]
