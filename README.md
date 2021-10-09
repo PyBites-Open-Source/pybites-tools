@@ -1,6 +1,6 @@
 # build
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rhyspowell/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/rhyspowellpybites-tools/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rhyspowell/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/rhyspowell/pybites-tools/main)
 [![CI check](https://github.com/rhyspowell/pybites-tools/workflows/check/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions)
 [![CI test](https://github.com/rhyspowell/pybites-tools/actions/workflows/test/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions/workflows/test)
 [![codecov](https://codecov.io/gh/rhyspowell/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/rhyspowell/pybites-tools)
