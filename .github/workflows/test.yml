@@ -103,6 +103,3 @@ jobs:
 
       - name: Setup run environment
         run: tox -vv --notest -e type
-
-      - name: Run check for type
-        run: tox -e type --skip-pkg-install
