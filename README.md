@@ -1,13 +1,11 @@
 # build
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pypa/build/main.svg)](https://results.pre-commit.ci/latest/github/PyBites-Open-Source/pybites-tools/main)
-[![CI check](https://github.com/pypa/build/workflows/check/badge.svg)](https://github.com/pypa/build/actions)
-[![CI test](https://github.com/pypa/build/actions/workflows/test.yml/badge.svg)](https://github.com/pypa/build/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/pypa/build/branch/main/graph/badge.svg)](https://codecov.io/gh/pypa/build)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/PyBites-Open-Source/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/PyBites-Open-Source/pybites-tools/main)
+[![CI check](https://github.com/PyBites-Open-Source/pybites-tools/workflows/check/badge.svg)](https://github.com/PyBites-Open-Source/pybites-tools/actions)
+[![CI test](https://github.com/PyBites-Open-Source/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/PyBites-Open-Source/pybites-tools/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/PyBites-Open-Source/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/PyBites-Open-Source/pybites-tools)
 
-[![Documentation Status](https://readthedocs.org/projects/pypa-build/badge/?version=latest)](https://pypa-build.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/build.svg)](https://pypi.org/project/build/)
-[![Discord](https://img.shields.io/discord/803025117553754132?label=Discord%20chat%20%23build&style=flat-square)](https://discord.gg/pypa)
 
 # PyBites Tools
 
