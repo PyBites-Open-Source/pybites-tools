@@ -66,9 +66,6 @@ jobs:
       - name: Run test suite via wheel
         run: tox -e ${{env.BASE}}-wheel --skip-pkg-install
 
-      - name: Run minimum version test
-        run: tox -e ${{env.BASE}}-min
-
       - name: Rename coverage report file
         run: mv ".tox/coverage.${BASE}.xml" .tox/coverage.xml
         shell: bash
