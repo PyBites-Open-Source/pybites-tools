@@ -94,6 +94,3 @@ jobs:
 
       - name: Install tox
         run: python -m pip install tox
-
-      - name: Setup run environment
-        run: tox -vv --notest -e type
