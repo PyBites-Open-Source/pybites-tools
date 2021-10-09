@@ -6,8 +6,6 @@ jobs:
   pytest:
     runs-on: ${{ matrix.os }}-latest
     timeout-minutes: 5
-    env:
-      PYTEST_ADDOPTS: "--run-integration --showlocals -vv --durations=10 --reruns 5 --only-rerun subprocess.CalledProcessError"
     strategy:
       fail-fast: false
       matrix:
