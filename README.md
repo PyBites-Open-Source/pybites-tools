@@ -4,6 +4,8 @@
 [![CI test](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/rhyspowell/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/rhyspowell/pybites-tools)
 
+# Can be added to correct path after
+
 [![PyPI version](https://badge.fury.io/py/build.svg)](https://)
 
 # PyBites Tools
