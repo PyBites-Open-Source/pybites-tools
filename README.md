@@ -1,9 +1,9 @@
 # build
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rhyspowell/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/PyBites-Open-Source/pybites-tools/main)
-[![CI check](https://github.com/PyBites-Open-Source/pybites-tools/workflows/check/badge.svg)](https://github.com/PyBites-Open-Source/pybites-tools/actions)
-[![CI test](https://github.com/PyBites-Open-Source/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/PyBites-Open-Source/pybites-tools/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/PyBites-Open-Source/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/PyBites-Open-Source/pybites-tools)
+[![CI check](https://github.com/rhyspowell/pybites-tools/workflows/check/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions)
+[![CI test](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/rhyspowell/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/rhyspowell/pybites-tools)
 
 [![PyPI version](https://badge.fury.io/py/build.svg)](https://pypi.org/project/build/)
 
