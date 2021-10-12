@@ -40,9 +40,9 @@ def convert_a_given_time(hour=None, minute=None, tzone=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-x", "--hour", type=int)
-    parser.add_argument("-m", "--minute", type=int)
-    parser.add_argument("-t", "--tzone", type=str)
+    parser.add_argument("-hr", "--hour", type=int)
+    parser.add_argument("-min", "--minute", type=int)
+    parser.add_argument("-tz", "--tzone", type=str)
 
     args = parser.parse_args()
     convert_a_given_time(args.hour, args.minute, args.tzone)
