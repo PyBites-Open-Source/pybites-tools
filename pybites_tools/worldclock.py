@@ -13,32 +13,18 @@ load_dotenv()
 
 
 def convert_a_given_time(hour=None, minute=None, user_tz=None):
-    user_tz_now = datetime.now(timezone(f"{user_tz}"))
-    user_given_time = user_tz_now.replace(hour=hour, minute=minute)
-    formatted_dt = user_given_time.strftime(FMT)
-    user_given_time_utc = user_given_time.astimezone(pytz.utc)
-
-    print(f"Converting {formatted_dt} in {user_tz}:")
+    # print(f"Converting {formatted_dt} in {user_tz}:")
     try:
         timezones = json.loads(os.environ["TIMEZONE_LIST"])
         for zone in timezones:
-            converted_time = user_given_time_utc.astimezone(pytz.timezone(zone))
-            formatted_time = converted_time.strftime(FMT)
-            print(f"{zone:25} {formatted_time}")
-    except pytz.exceptions.UnknownTimeZoneError:
-        print(
-            "UnknownTimeZoneError occurred.  Please check your .env file for correct timezone names"
-        )
-    except json.decoder.JSONDecodeError as d:
-        print("JSON error occurred.  Please check your .env file for syntax")
-        print(d.args)
-
-
-def convert_current_time():
-    try:
-        timezones = json.loads(os.environ["TIMEZONE_LIST"])
-        for zone in timezones:
-            converted_time = datetime.now(pytz.timezone(zone))
+            if hour:
+                user_tz_now = datetime.now(timezone(f"{user_tz}"))
+                user_given_time = user_tz_now.replace(hour=hour, minute=minute)
+                # formatted_dt = user_given_time.strftime(FMT)
+                user_given_time_utc = user_given_time.astimezone(pytz.utc)
+                converted_time = user_given_time_utc.astimezone(pytz.timezone(zone))
+            else:
+                converted_time = datetime.now(pytz.timezone(zone))
             formatted_time = converted_time.strftime(FMT)
             print(f"{zone:25} {formatted_time}")
     except pytz.exceptions.UnknownTimeZoneError:
@@ -51,10 +37,9 @@ def convert_current_time():
 
 
 def main():
-    convert_current_time()
-    print()
-    convert_a_given_time(22, 22, "America/New_York")
+    pass
 
 
 if __name__ == "__main__":
-    main()
+    convert_a_given_time(22, 22, "America/New_York")
+    # convert_a_given_time()
