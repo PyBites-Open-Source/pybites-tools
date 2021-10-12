@@ -12,15 +12,17 @@ FMT = "%I:%M%p"
 load_dotenv()
 
 
-def convert_a_given_time(hour=None, minute=None, user_tz=None):
-    # print(f"Converting {formatted_dt} in {user_tz}:")
+def convert_a_given_time(hour=None, minute=None, tzone=None):
     try:
+        if tzone:
+            print(f"Converting time from {tzone}:")
+
         timezones = json.loads(os.environ["TIMEZONE_LIST"])
+
         for zone in timezones:
             if hour:
-                user_tz_now = datetime.now(timezone(f"{user_tz}"))
+                user_tz_now = datetime.now(timezone(f"{tzone}"))
                 user_given_time = user_tz_now.replace(hour=hour, minute=minute)
-                # formatted_dt = user_given_time.strftime(FMT)
                 user_given_time_utc = user_given_time.astimezone(pytz.utc)
                 converted_time = user_given_time_utc.astimezone(pytz.timezone(zone))
             else:
@@ -29,7 +31,7 @@ def convert_a_given_time(hour=None, minute=None, user_tz=None):
             print(f"{zone:25} {formatted_time}")
     except pytz.exceptions.UnknownTimeZoneError:
         print(
-            "UnknownTimeZoneError occurred.  Please check your .env file for correct timezone names"
+            "UnknownTimeZoneError occurred.  Please check that your timezones are spelled correctly."
         )
     except json.decoder.JSONDecodeError as d:
         print("JSON error occurred.  Please check your .env file for syntax")
@@ -37,9 +39,14 @@ def convert_a_given_time(hour=None, minute=None, user_tz=None):
 
 
 def main():
-    pass
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-x", "--hour", type=int)
+    parser.add_argument("-m", "--minute", type=int)
+    parser.add_argument("-t", "--tzone", type=str)
+
+    args = parser.parse_args()
+    convert_a_given_time(args.hour, args.minute, args.tzone)
 
 
 if __name__ == "__main__":
-    convert_a_given_time(22, 22, "America/New_York")
-    # convert_a_given_time()
+    main()
