@@ -1,3 +1,5 @@
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
 # build
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rhyspowell/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/rhyspowell/pybites-tools/main)
