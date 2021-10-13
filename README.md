@@ -2,9 +2,9 @@
 
 # build
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rhyspowell/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/rhyspowell/pybites-tools/main)
-[![CI test](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/rhyspowell/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/rhyspowell/pybites-tools)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Pybites-Open-Source/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/rhyspowell/pybites-tools/main)
+[![CI test](https://github.com/Pybites-Open-Source/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/Pybites-Open-Source/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/rhyspowell/pybites-tools)
 
 # Can be added to correct path after
 
