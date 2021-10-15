@@ -13,9 +13,6 @@ load_dotenv()
 
 
 def convert_a_given_time(hour=None, minute=None, tzone=None):
-    if tzone:
-        print(f"Converting time from {tzone}:")
-
     timezones = json.loads(os.environ["TIMEZONE_LIST"])
 
     for zone in timezones:
