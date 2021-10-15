@@ -17,8 +17,8 @@ def convert_a_given_time(hour=None, minute=None, tzone=None):
 
     for zone in timezones:
         if hour:
-            user_tz_now = datetime.now(timezone(f"{tzone}"))
-            user_given_time = user_tz_now.replace(hour=hour, minute=minute)
+            user_given_tz_now = datetime.now(timezone(f"{tzone}"))
+            user_given_time = user_given_tz_now.replace(hour=hour, minute=minute)
             user_given_time_utc = user_given_time.astimezone(pytz.utc)
             converted_time = user_given_time_utc.astimezone(pytz.timezone(zone))
         else:
