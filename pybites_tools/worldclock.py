@@ -12,7 +12,7 @@ FMT = "%I:%M%p"
 load_dotenv()
 
 
-def convert_a_given_time(hour=None, minute=None, tzone=None):
+def convert_time(hour=None, minute=None, tzone=None):
     timezones = json.loads(os.environ["TIMEZONE_LIST"])
 
     for zone in timezones:
@@ -45,7 +45,7 @@ def main():
     parser.add_argument("-tz", "--tzone", type=str)
 
     args = parser.parse_args()
-    convert_a_given_time(args.hour, args.minute, args.tzone)
+    convert_time(args.hour, args.minute, args.tzone)
 
 
 if __name__ == "__main__":
