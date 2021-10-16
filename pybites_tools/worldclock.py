@@ -16,26 +16,27 @@ load_dotenv()
 def convert_time(hour=None, minute=None, tzone=None):
     try:
         timezones = json.loads(os.environ["TIMEZONE_LIST"])
+    except json.decoder.JSONDecodeError as d:
+        print("JSON error occurred.  Please check your .env file for syntax")
+        sys.exit(d.args)
 
-        for zone in timezones:
+    for zone in timezones:
+        try:
             if not hour:
                 converted_time = datetime.now(pytz.timezone(zone))
+                formatted_time = converted_time.strftime(FMT)
+                print(f"{zone:25} {formatted_time}")
             else:
                 user_given_tz_now = datetime.now(timezone(f"{tzone}"))
                 user_given_time = user_given_tz_now.replace(hour=hour, minute=minute)
                 user_given_time_utc = user_given_time.astimezone(pytz.utc)
                 converted_time = user_given_time_utc.astimezone(pytz.timezone(zone))
-
-            formatted_time = converted_time.strftime(FMT)
-            print(f"{zone:25} {formatted_time}")
-
-    except pytz.exceptions.UnknownTimeZoneError:
-        print(
-            "UnknownTimeZoneError occurred.  Please check that your timezones are spelled correctly."
-        )
-    except json.decoder.JSONDecodeError as d:
-        print("JSON error occurred.  Please check your .env file for syntax")
-        sys.exit(d.args)
+                formatted_time = converted_time.strftime(FMT)
+                print(f"{zone:25} {formatted_time}")
+        except pytz.exceptions.UnknownTimeZoneError:
+            print(
+                "UnknownTimeZoneError occurred.  Please check that your timezones are spelled correctly."
+            )
 
 
 def main():
