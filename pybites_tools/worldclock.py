@@ -34,8 +34,8 @@ def convert_time(hour=None, minute=None, tzone=None):
                 formatted_time = converted_time.strftime(FMT)
                 print(f"{zone:25} {formatted_time}")
         except pytz.exceptions.UnknownTimeZoneError:
-            print(
-                "UnknownTimeZoneError occurred.  Please check that your timezones are spelled correctly."
+            sys.exit(
+                "UnknownTimeZoneError - Check that your timezones are spelled correctly."
             )
 
 
