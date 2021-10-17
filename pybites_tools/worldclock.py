@@ -1,7 +1,7 @@
 import argparse
 import json
 import os
-from datetime import datetime, time
+from datetime import datetime
 import sys
 
 import pytz
