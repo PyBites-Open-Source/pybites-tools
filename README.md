@@ -1,4 +1,5 @@
 # PyBites Tools
+
 Welcome to PyBites Tools repo!
 
 This is a collection repo for all things python that we have found helpful to get your modern Python project up and going.
@@ -35,6 +36,7 @@ Or use tools by importing them in your scripts, for example:
 ```
 
 ## Developer setup
+
 If you want to contribute or modify the repo, make a fork and clone it, for example:
 
 ```
@@ -47,6 +49,7 @@ To get started run: \
 This will create a virtual environment and install the dependencies.
 
 Before committing any code, you should install and run pre-commit. [Why pre-commit?](https://talkpython.fm/episodes/show/282/pre-commit-framework)
+
 Just run  `pre-commit install`.
 
 For some tools, you will need environment variables. You can set them by copying over the `.env-template` file to `.env`.
@@ -58,7 +61,7 @@ For some tools, you will need environment variables. You can set them by copying
 Configure the `EMAIL_*` environment variables; then you can run it like this:
 
 ```
-$ python -m pybites_tools.email -s "test subject" -m "test message" --email recipient@example.com
+$ python -m pybites_tools.sendemail -s "test subject" -m "test message" --email recipient@example.com
 ```
 
 If you set `EMAIL_DEFAULT_TO_EMAIL`, you can leave off the `--email` switch. This is useful if you want to send yourself a reminder often.
@@ -67,7 +70,7 @@ For example, you could add something like this in your `.zshrc`:
 
 ```
 function remind {
-    (cd $HOME/code/pybites-tools && source venv/bin/activate && python -m pybites_tools.email -s "$1" -m "$2")
+    (cd $HOME/code/pybites-tools && source venv/bin/activate && python -m pybites_tools.sendemail -s "$1" -m "$2")
 }
 ```
 
