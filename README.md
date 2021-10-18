@@ -105,6 +105,15 @@ CET                       05:35AM
 Australia/Sydney          02:35PM
 ```
 
+Or specify a time in some other timezone to be converted
+(e.g. to convert 10:55PM in London):
+```
+$ python -m pybites_tools.worldclock -hr 22 -min 55 -tz Europe/London
+America/Los_Angeles       02:55PM
+CET                       11:55PM
+Australia/Sydney          08:55AM
+```
+
 ### Copy Zen of Python to clipboard
 
 Why not send it to a coder friend from time to time?
