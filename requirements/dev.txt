@@ -4,3 +4,4 @@ pytest-cov
 mypy
 flake8
 pre-commit
+freezegun
