@@ -14,5 +14,9 @@ typing:
 test:
 	pytest
 
+.PHONY: coverage
+cov:
+	pytest --cov=pybites_tools --cov-report term-missing
+
 .PHONY: ci
 ci: lint test
