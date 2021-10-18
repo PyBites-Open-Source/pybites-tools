@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from pytz import timezone
 
 FMT = "%I:%M%p"
+DEFAULT_TIMEZONE = "UTC"
 
 load_dotenv()
 
@@ -20,7 +21,7 @@ class WorldClockException(Exception):
 def convert_time(hour: int = None, minute: int = None, tzone: str = None) -> None:
     try:
         timezones = json.loads(os.environ["TIMEZONE_LIST"])
-    except json.decoder.JSONDecodeError as d:
+    except json.decoder.JSONDecodeError:
         raise WorldClockException(
             "JSON error occurred. Please check your .env file for syntax"
         )
@@ -43,10 +44,12 @@ def convert_time(hour: int = None, minute: int = None, tzone: str = None) -> Non
 
 
 def main():
+    now = datetime.now()
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("-hr", "--hour", type=int)
-    parser.add_argument("-min", "--minute", type=int)
-    parser.add_argument("-tz", "--tzone", type=str)
+    parser.add_argument("-hr", "--hour", type=int, default=now.hour)
+    parser.add_argument("-min", "--minute", type=int, default=now.minute)
+    parser.add_argument("-tz", "--tzone", type=str, default=DEFAULT_TIMEZONE)
 
     args = parser.parse_args()
     try:
