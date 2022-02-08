@@ -8,7 +8,7 @@ import pytz
 from dotenv import load_dotenv
 from pytz import timezone
 
-FMT = "%I:%M%p"
+DEFAULT_FMT = "%I:%M%p"
 DEFAULT_TIMEZONE = "UTC"
 
 load_dotenv()
@@ -39,6 +39,8 @@ def convert_time(hour: int = None, minute: int = None, tzone: str = None) -> Non
             raise WorldClockException(
                 "UnknownTimeZoneError - Check that your timezones are spelled correctly."
             )
+
+        FMT = os.getenv("TIME_FORMAT", DEFAULT_FMT)
         formatted_time = converted_time.strftime(FMT)
         print(f"{zone:25} {formatted_time}")
 

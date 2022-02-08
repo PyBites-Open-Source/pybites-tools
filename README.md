@@ -105,11 +105,13 @@ $ python -m pybites_tools.aws -f file-path (-b bucket) (-a acl)
 ### WorldClock from the command line
 
 Add the timezones that you would like displayed to the TIMEZONE_LIST configuration variable in `.env`. (List of all timezones [here](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568).)
+And uncomment/set the TIME_FORMAT in case you want a different output format (see [strftime() and strptime() Format Codes](https://docs.python.org/3.10/library/datetime.html#strftime-and-strptime-format-codes) for options).
 
 Like this:
 
 ```
 TIMEZONE_LIST=["America/Los_Angeles","CET","Australia/Sydney"]
+TIME_FORMAT="%H:%M %z" # 24-hour clock with UTC offset
 ```
 
 Then:
