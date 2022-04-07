@@ -5,4 +5,3 @@ mypy
 flake8
 pre-commit
 freezegun
-tox

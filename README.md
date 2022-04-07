@@ -2,13 +2,13 @@
 
 # build
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Pybites-Open-Source/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/rhyspowell/pybites-tools/main)
-[![CI test](https://github.com/Pybites-Open-Source/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/rhyspowell/pybites-tools/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/Pybites-Open-Source/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/rhyspowell/pybites-tools)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Pybites-Open-Source/pybites-tools/main.svg)](https://results.pre-commit.ci/latest/github/Pybites-Open-Source/pybites-tools/main)
+[![CI test](https://github.com/Pybites-Open-Source/pybites-tools/actions/workflows/test.yml/badge.svg)](https://github.com/Pybites-Open-Source/pybites-tools/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/Pybites-Open-Source/pybites-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/Pybites-Open-Source/pybites-tools)
 
 # Can be added to correct path after
 
-[![PyPI version](https://badge.fury.io/py/build.svg)](https://)
+[![PyPI version](https://badge.fury.io/py/build.svg)](https://pypi.org/project/pybites-tools/)
 
 # PyBites Tools
 
@@ -62,7 +62,7 @@ This will create a virtual environment and install the dependencies.
 
 Before committing any code, you should install and run pre-commit. [Why pre-commit?](https://talkpython.fm/episodes/show/282/pre-commit-framework)
 
-Just run  `pre-commit install`.
+Just run `pre-commit install`.
 
 For some tools, you will need environment variables. You can set them by copying over the `.env-template` file to `.env`.
 
@@ -105,14 +105,17 @@ $ python -m pybites_tools.aws -f file-path (-b bucket) (-a acl)
 ### WorldClock from the command line
 
 Add the timezones that you would like displayed to the TIMEZONE_LIST configuration variable in `.env`. (List of all timezones [here](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568).)
+And uncomment/set the TIME_FORMAT in case you want a different output format (see [strftime() and strptime() Format Codes](https://docs.python.org/3.10/library/datetime.html#strftime-and-strptime-format-codes) for options).
 
 Like this:
 
 ```
 TIMEZONE_LIST=["America/Los_Angeles","CET","Australia/Sydney"]
+TIME_FORMAT="%H:%M %z" # 24-hour clock with UTC offset
 ```
 
 Then:
+
 ```
 $ python -m pybites_tools.worldclock
 America/Los_Angeles       08:35PM
@@ -122,6 +125,7 @@ Australia/Sydney          02:35PM
 
 Or specify a time in some other timezone to be converted
 (e.g. to convert 10:55PM in London):
+
 ```
 $ python -m pybites_tools.worldclock -hr 22 -min 55 -tz Europe/London
 America/Los_Angeles       02:55PM
