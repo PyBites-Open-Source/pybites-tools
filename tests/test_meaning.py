@@ -16,10 +16,6 @@ from unittest import mock
             argparse.Namespace(lang="en", origin=True, word="word"),
             "Old English, of Germanic origin; related to Dutch woord and German Wort, from an Indo-European root shared by Latin verbum ‘word’.",
         ),
-        (
-            argparse.Namespace(lang="de", origin=False, word="danke"),
-            "zur Unterstreichung einer höflichen Ablehnung oder Annahme eines Angebots o. Ä.",
-        ),
     ],
 )
 def test_main(args, expected, capsys):

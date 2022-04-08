@@ -3,13 +3,12 @@ import requests
 
 
 def get_meaning(args):
-    lang = ""
     word = args.word
 
     if args.lang:
         lang = args.lang
 
-    request = f"https://api.dictionaryapi.dev/api/v2/entries/{lang}/{word}"
+    request = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
 
     response = requests.get(request)
 
@@ -46,12 +45,6 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("word", help="The word you want to know the meaning of")
-    parser.add_argument(
-        "-l",
-        "--lang",
-        default="en",
-        help="Set the language for the word in ISO 2 letter format. For more information see https://www.sitepoint.com/iso-2-letter-language-codes/",
-    )
     parser.add_argument(
         "-o",
         "--origin",
