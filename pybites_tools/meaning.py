@@ -5,9 +5,6 @@ import requests
 def get_meaning(args):
     word = args.word
 
-    if args.lang:
-        lang = args.lang
-
     request = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
 
     response = requests.get(request)
