@@ -27,6 +27,14 @@ from pybites_tools.worldclock import WorldClockException
                 "America/Los_Angeles       02:55PM\n"
             ),
         ),
+        (
+            [0, 1, "UTC"],
+            (
+                "CET                       02:01AM\n"
+                "Australia/Sydney          11:01AM\n"
+                "America/Los_Angeles       05:01PM\n"
+            ),
+        ),
     ],
 )
 def test_worldclock(monkeypatch, capsys, args, expected):
