@@ -10,6 +10,8 @@ from pytz import timezone
 
 DEFAULT_FMT = "%I:%M%p"
 DEFAULT_TIMEZONE = "UTC"
+HOURS_IN_DAY = range(0, 24)
+MINUTES_IN_HOUR = range(0, 60)
 
 load_dotenv()
 
@@ -28,13 +30,13 @@ def convert_time(hour: int = None, minute: int = None, tzone: str = None) -> Non
 
     for zone in timezones:
         try:
-            if not hour:
-                converted_time = datetime.now(pytz.timezone(zone))
-            else:
+            if hour in HOURS_IN_DAY and minute in MINUTES_IN_HOUR:
                 user_given_tz_now = datetime.now(timezone(f"{tzone}"))
                 user_given_time = user_given_tz_now.replace(hour=hour, minute=minute)
                 user_given_time_utc = user_given_time.astimezone(pytz.utc)
                 converted_time = user_given_time_utc.astimezone(pytz.timezone(zone))
+            else:
+                converted_time = datetime.now(pytz.timezone(zone))
         except pytz.exceptions.UnknownTimeZoneError:
             raise WorldClockException(
                 "UnknownTimeZoneError - Check that your timezones are spelled correctly."
