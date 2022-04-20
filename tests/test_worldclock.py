@@ -20,7 +20,7 @@ from pybites_tools.worldclock import WorldClockException
             ),
         ),
         (
-            [22, 55, "Europe/London"],
+            [22, 55, 2022, 4, 1, "Europe/London"],
             (
                 "CET                       11:55PM\n"
                 "Australia/Sydney          08:55AM\n"
@@ -28,7 +28,7 @@ from pybites_tools.worldclock import WorldClockException
             ),
         ),
         (
-            [0, 1, "UTC"],
+            [0, 1, 2022, 4, 1, "UTC"],
             (
                 "CET                       02:01AM\n"
                 "Australia/Sydney          11:01AM\n"
