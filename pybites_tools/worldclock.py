@@ -12,7 +12,7 @@ DEFAULT_TIMEZONE = "UTC"
 HOURS_IN_DAY = range(0, 24)
 MINUTES_IN_HOUR = range(0, 60)
 MONTHS_IN_YEAR = range(1, 13)
-DAYS_IN_MONTH = range(1, 32)
+MAX_DAYS_IN_MONTH = range(1, 32)
 
 load_dotenv()
 
@@ -37,8 +37,7 @@ def convert_time(
         )
 
     for zone in timezones:
-        # gettz returns None if not a valid timezone
-        if not tz.gettz(zone):
+        if not tz.gettz(zone) is not None:
             raise WorldClockException(
                 "UnknownTimeZoneError - Check that your timezones are spelled correctly."
             )
@@ -46,7 +45,7 @@ def convert_time(
             hour in HOURS_IN_DAY
             and minute in MINUTES_IN_HOUR
             and month in MONTHS_IN_YEAR
-            and day in DAYS_IN_MONTH
+            and day in MAX_DAYS_IN_MONTH
         ):
             user_given_tz_now = datetime.now(tz.gettz(tzone))
             user_given_time = user_given_tz_now.replace(
