@@ -37,7 +37,7 @@ def convert_time(
         )
 
     for zone in timezones:
-        if not tz.gettz(zone) is not None:
+        if tz.gettz(zone) is None:
             raise WorldClockException(
                 "UnknownTimeZoneError - Check that your timezones are spelled correctly."
             )
