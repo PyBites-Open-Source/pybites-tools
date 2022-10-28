@@ -9,16 +9,40 @@ from unittest import mock
     "args, expected",
     [
         (
-            argparse.Namespace(origin=False, word="word"),
-            "The smallest unit of language that has a particular meaning and can be expressed by itself; the smallest discrete, meaningful unit of language. (contrast morpheme.)",
+            argparse.Namespace(word="fish", lang=["en"]),
+            "any of a large group of cold-blooded aquatic vertebrates having jaws",
         ),
         (
-            argparse.Namespace(origin=True, word="word"),
-            "No origin information available",
+            argparse.Namespace(word="Fisch", lang=["de"]),
+            "ein im Wasser lebendes Wirbeltier, das eine mit Schuppen bedeckte Haut hat, mit Kiemen atmet und Flossen zum Schwimmen besitzt",
         ),
     ],
 )
 def test_main(args, expected, capsys):
     main(args)
     captured = capsys.readouterr()
+    print(captured.out)
     assert expected in captured.out
+
+
+@pytest.mark.parametrize(
+    "word, site, datasrc, expected",
+    [
+        (
+            "fish",
+            "https://www.thefreedictionary.com/",
+            {"data-src": "hc_dict"},
+            "any of a large group of cold-blooded aquatic vertebrates having jaws",
+        ),
+        (
+            "Fisch",
+            "https://de.thefreedictionary.com/",
+            {"data-src": "pons"},
+            "ein im Wasser lebendes Wirbeltier, das eine mit Schuppen bedeckte Haut hat, mit Kiemen atmet und Flossen zum Schwimmen besitzt",
+        ),
+    ],
+)
+def test_get_meaning(word, site, datasrc, expected):
+    response = get_meaning(word, site, datasrc)
+    print(response)
+    assert expected in response
