@@ -30,7 +30,6 @@ def main(args):
 
     word = args.word
 
-    print(args.lang)
     if args.lang == ["en"]:
         intro = "Your word was"
         datasrc = {"data-src": "hc_dict"}
