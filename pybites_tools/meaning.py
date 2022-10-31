@@ -1,21 +1,23 @@
 import argparse
-import urllib.request as r
-import urllib.error
+import requests
 
 from bs4 import BeautifulSoup as bs4
+from requests.exceptions import HTTPError
 
 
 def get_meaning(word, site, datasrc):
 
     try:
-        response = r.urlopen(site + word).read().decode()
-    except urllib.error.HTTPError as e:
-        print(
-            f"Error getting url. Please check to see if you can access {site}{word} in a browser"
-        )
-        exit(1)
+        response = requests.get(site + word)
+        response.raise_for_status()
+    except HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+        exit(255)
+    except Exception as err:
+        print(f"Other error occurred: {err}")
+        exit(255)
 
-    soup = bs4(response, "html.parser")
+    soup = bs4(response.text, "html.parser")
 
     data = soup.find("section", attrs=datasrc).findAll("div")
 
