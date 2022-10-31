@@ -102,16 +102,19 @@ Then you can upload a file using:
 $ python -m pybites_tools.aws -f file-path (-b bucket) (-a acl)
 ```
 
+[AWS ACL overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html)
+
 ### WorldClock from the command line
 
-Add the timezones that you would like displayed to the TIMEZONE_LIST configuration variable in `.env`. (List of all timezones [here](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568).)
-And uncomment/set the TIME_FORMAT in case you want a different output format (see [strftime() and strptime() Format Codes](https://docs.python.org/3.10/library/datetime.html#strftime-and-strptime-format-codes) for options).
+Add the timezones that you would like displayed to the TIMEZONE_LIST configuration variable in `.env`. (List of all timezones [here](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568)). And uncomment/set the TIME_FORMAT in case you want a different output format (see [strftime() and strptime() Format Codes](https://docs.python.org/3.10/library/datetime.html#strftime-and-strptime-format-codes) for options).
+When working with others in multiple timezones you usually refer to your local timezone for reference. That said you can uncomment/set the TIMEZONE to your local one to avoid using the `-tz` command line parameter every time (if omitted UTC is used).
 
 Like this:
 
 ```
 TIMEZONE_LIST=["America/Los_Angeles","CET","Australia/Sydney"]
 TIME_FORMAT="%H:%M %z" # 24-hour clock with UTC offset
+TIMEZONE="Europe/Berlin"
 ```
 
 Then:
@@ -131,6 +134,19 @@ $ python -m pybites_tools.worldclock -hr 22 -min 55 -tz Europe/London
 America/Los_Angeles       02:55PM
 CET                       11:55PM
 Australia/Sydney          08:55AM
+```
+
+Around the dates where daylight saving times (DST) are changed finding the right timeslot for a meeting/call in the next week can be off due to the DST changed. That's why you can use the `--year`, `--month` and `--day` to find the correct time.
+
+```
+$ python -m pybites_tools.worldclock -hr 15 -min 0 -y 2022 -m 3 -d 10
+America/Los_Angeles       07:00AM
+CET                       04:00PM
+Australia/Sydney          02:00AM
+$ python -m pybites_tools.worldclock -hr 15 -min 0 -y 2022 -m 3 -d 15
+America/Los_Angeles       08:00AM
+CET                       04:00PM
+Australia/Sydney          02:00AM
 ```
 
 ### Copy Zen of Python to clipboard
