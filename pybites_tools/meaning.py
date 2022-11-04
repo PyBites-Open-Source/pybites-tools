@@ -12,7 +12,7 @@ def get_meaning(word, site, datasrc):
         if response.status_code == 404:
             print("Word not found")
         else:
-            print(f"An error occurred: {response}")
+            print(f"An error occurred: {response.reason}")
         exit(255)
 
     soup = bs4(response.text, "html.parser")
