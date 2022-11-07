@@ -7,14 +7,12 @@ from requests.exceptions import HTTPError
 
 def get_meaning(word, site, datasrc):
 
-    try:
-        response = requests.get(site + word)
-        response.raise_for_status()
-    except HTTPError as http_err:
-        print(f"HTTP error occurred: {http_err}")
-        exit(255)
-    except Exception as err:
-        print(f"Other error occurred: {err}")
+    response = requests.get(site + word)
+    if not response.ok:
+        if response.status_code == 404:
+            print("Word not found")
+        else:
+            print(f"An error occurred: {response.reason}")
         exit(255)
 
     soup = bs4(response.text, "html.parser")
