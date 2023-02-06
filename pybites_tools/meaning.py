@@ -6,7 +6,6 @@ from requests.exceptions import HTTPError
 
 
 def get_meaning(word, site, datasrc):
-
     response = requests.get(site + word)
     if not response.ok:
         if response.status_code == 404:
@@ -27,7 +26,6 @@ def get_meaning(word, site, datasrc):
 
 
 def main(args):
-
     word = args.word
 
     if args.lang == ["en"]:
