@@ -1,8 +1,8 @@
 import argparse
+
 import pytest
 
 from pybites_tools.meaning import get_meaning, main
-from unittest import mock
 
 
 @pytest.mark.parametrize(
