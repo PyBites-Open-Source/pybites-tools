@@ -1,18 +1,29 @@
 import argparse
+import sys
+from urllib.error import HTTPError
+
 import requests
-
 from bs4 import BeautifulSoup as bs4
-from requests.exceptions import HTTPError
 
 
-def get_meaning(word, site, datasrc):
-    response = requests.get(site + word)
-    if not response.ok:
-        if response.status_code == 404:
-            print("Word not found")
-        else:
-            print(f"An error occurred: {response.reason}")
-        exit(255)
+class MeaningError(Exception):
+    pass
+
+
+SUCCESS, FAILURE = 0, 255
+
+
+def get_meaning(word: str, site: str, datasrc: dict) -> str:
+    try:
+        response = requests.get(site + word)
+        response.raise_for_status()
+    except HTTPError as error:
+        error_msg = (
+            "Word not found"
+            if error.code == requests.codes.not_found
+            else f"An error occurred: {error}"
+        )
+        raise MeaningError(error_msg)
 
     soup = bs4(response.text, "html.parser")
 
@@ -25,7 +36,7 @@ def get_meaning(word, site, datasrc):
     return meaning
 
 
-def main(args):
+def main(args) -> int:
     word = args.word
 
     if args.lang == ["en"]:
@@ -38,9 +49,14 @@ def main(args):
         datasrc = {"data-src": "pons"}
         site = "https://de.thefreedictionary.com/"
 
-    meaning = get_meaning(word, site, datasrc)
+    try:
+        meaning: str = get_meaning(word, site, datasrc)
+    except MeaningError:
+        return FAILURE
 
     print(f"{intro}: {word}\n\t{meaning}")
+
+    return SUCCESS
 
 
 if __name__ == "__main__":
@@ -58,4 +74,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    main(args)
+    sys.exit(main(args))
