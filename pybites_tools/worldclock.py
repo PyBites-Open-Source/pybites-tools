@@ -1,11 +1,11 @@
 import argparse
 import json
 import os
-from datetime import datetime
 import sys
+from datetime import datetime
 
-from dotenv import load_dotenv
 from dateutil import tz
+from dotenv import load_dotenv
 
 DEFAULT_FMT = "%I:%M%p"
 DEFAULT_TIMEZONE = "UTC"
@@ -28,6 +28,7 @@ def convert_time(
     month: int = None,
     day: int = None,
     tzone: str = None,
+    date_offset: bool = False,
 ) -> None:
     try:
         timezones = json.loads(os.environ["TIMEZONE_LIST"])
@@ -58,6 +59,10 @@ def convert_time(
 
         FMT = os.getenv("TIME_FORMAT", DEFAULT_FMT)
         formatted_time = converted_time.strftime(FMT)
+
+        if date_offset:
+            formatted_time += f"   {converted_time.strftime('%d %b %Y')}"
+
         print(f"{zone:25} {formatted_time}")
 
 
@@ -74,11 +79,18 @@ def main():
     parser.add_argument("-m", "--month", type=int, default=now.month)
     parser.add_argument("-d", "--day", type=int, default=now.day)
     parser.add_argument("-tz", "--tzone", type=str, default=timezone)
+    parser.add_argument("-do", "--date-offset", action="store_true")
 
     args = parser.parse_args()
     try:
         convert_time(
-            args.hour, args.minute, args.year, args.month, args.day, args.tzone
+            args.hour,
+            args.minute,
+            args.year,
+            args.month,
+            args.day,
+            args.tzone,
+            args.date_offset,
         )
     except WorldClockException as exc:
         print(exc)
