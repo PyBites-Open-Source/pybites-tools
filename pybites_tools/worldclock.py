@@ -83,7 +83,6 @@ def main():
 
     args = parser.parse_args()
     try:
-        print(f"args: {args}")
         convert_time(
             args.hour,
             args.minute,
