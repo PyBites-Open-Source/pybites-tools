@@ -97,5 +97,6 @@ def main():
     for zone, time in result:
         print(f"{zone:25} {time}")
 
+
 if __name__ == "__main__":
     main()
