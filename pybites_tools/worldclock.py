@@ -28,7 +28,7 @@ def convert_time(
     day: int = None,
     tzone: str = None,
     date_offset: bool = False,
-) -> None:
+) -> list[tuple[str, str]]:
     results = []
     try:
         timezones = json.loads(os.environ["TIMEZONE_LIST"])
