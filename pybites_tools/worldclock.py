@@ -13,7 +13,6 @@ HOURS_IN_DAY = range(0, 24)
 MINUTES_IN_HOUR = range(0, 60)
 MONTHS_IN_YEAR = range(1, 13)
 MAX_DAYS_IN_MONTH = range(1, 32)
-
 load_dotenv()
 
 
@@ -29,14 +28,14 @@ def convert_time(
     day: int = None,
     tzone: str = None,
     date_offset: bool = False,
-) -> None:
+) -> list[tuple[str, str]]:
+    results = []
     try:
         timezones = json.loads(os.environ["TIMEZONE_LIST"])
     except json.decoder.JSONDecodeError:
         raise WorldClockException(
             "JSON error occurred. Please check your .env file for syntax"
         )
-
     for zone in timezones:
         if tz.gettz(zone) is None:
             raise WorldClockException(
@@ -62,8 +61,8 @@ def convert_time(
 
         if date_offset:
             formatted_time += f"   {converted_time.strftime('%d %b %Y')}"
-
-        print(f"{zone:25} {formatted_time}")
+        results.append((zone, formatted_time))
+    return results
 
 
 def main():
@@ -83,7 +82,7 @@ def main():
 
     args = parser.parse_args()
     try:
-        convert_time(
+        result = convert_time(
             args.hour,
             args.minute,
             args.year,
@@ -95,6 +94,8 @@ def main():
     except WorldClockException as exc:
         print(exc)
         sys.exit(1)
+    for zone, time in result:
+        print(f"{zone:25} {time}")
 
 
 if __name__ == "__main__":
