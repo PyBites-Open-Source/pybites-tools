@@ -45,15 +45,16 @@ from pybites_tools.worldclock import WorldClockException
         ),
     ],
 )
-def test_worldclock(monkeypatch, capsys, args, expected):
+def test_worldclock(monkeypatch, args, expected):
     mock_env = {
         "TIMEZONE_LIST": '["Europe/Berlin", "Australia/Sydney", "America/Los_Angeles"]'
     }
     monkeypatch.setattr(os, "environ", mock_env)
-    worldclock.convert_time(*args)
-    captured = capsys.readouterr()
-    assert captured.out == expected
-
+    result = worldclock.convert_time(*args)
+    output = "\n".join(
+        f"{zone:25} {time}" for zone, time in result
+    ) + "\n"
+    assert output == expected
 
 def test_bad_timezone_json(monkeypatch, capsys):
     mock_env = {"TIMEZONE_LIST": '["CET" "Australia/Sydney", "America/Los_Angeles"]'}
@@ -123,11 +124,13 @@ def test_bad_timezone_entered(monkeypatch, capsys):
         ),
     ],
 )
-def test_worldclock_with_date_offset(monkeypatch, capsys, args, expected):
+def test_worldclock_with_date_offset(monkeypatch, args, expected):
     mock_env = {
         "TIMEZONE_LIST": '["Europe/Berlin", "Australia/Sydney", "America/Los_Angeles"]'
     }
     monkeypatch.setattr(os, "environ", mock_env)
-    worldclock.convert_time(*args)
-    captured = capsys.readouterr()
-    assert captured.out == expected
+    result = worldclock.convert_time(*args)
+    output = "\n".join(
+        f"{zone:25} {time}" for zone, time in result
+    ) + "\n"
+    assert output == expected
